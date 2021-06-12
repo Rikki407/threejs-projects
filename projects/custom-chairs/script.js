@@ -1,4 +1,9 @@
 import './style.css';
+import wood from '/img/wood_.jpg'
+import fabric from '/img/fabric_.jpg'
+import pattern from '/img/pattern_.jpg'
+import denim from '/img/denim_.jpg'
+import quilt from '/img/quilt_.jpg'
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -17,31 +22,31 @@ var loaded = false;
 
 const colors = [
     {
-        texture: 'img/wood_.jpg',
+        texture: wood,
         size: [2, 2, 2],
         shininess: 60,
     },
 
     {
-        texture: 'img/fabric_.jpg',
+        texture: fabric,
         size: [4, 4, 4],
         shininess: 0,
     },
 
     {
-        texture: 'img/pattern_.jpg',
+        texture: pattern,
         size: [8, 8, 8],
         shininess: 10,
     },
 
     {
-        texture: 'img/denim_.jpg',
+        texture: denim,
         size: [3, 3, 3],
         shininess: 0,
     },
 
     {
-        texture: 'img/quilt_.jpg',
+        texture: quilt,
         size: [6, 6, 6],
         shininess: 0,
     },
