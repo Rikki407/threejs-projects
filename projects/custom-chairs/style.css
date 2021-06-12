@@ -1,0 +1,279 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #444444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+* {
+    touch-action: manipulation;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.frame {
+    top: 0;
+    position: absolute;
+    left: 0;
+    padding: 1rem;
+}
+
+.frame__title {
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.frame__links {
+    display: inline-block;
+    margin: 0 2rem;
+    text-transform: lowercase;
+}
+
+.frame__links a {
+    display: inline-block;
+    margin: 0 0.25rem;
+    text-decoration: none;
+    color: red;
+}
+
+.frame__links a:focus,
+.frame__links a:hover {
+    text-decoration: underline;
+}
+
+#c {
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.options {
+    position: absolute;
+    left: 0;
+}
+
+.option {
+    background-size: cover;
+    background-position: 50%;
+    background-color: white;
+    margin-bottom: 3px;
+    padding: 10px;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.option:hover {
+    border-left: 5px solid white;
+    width: 58px;
+}
+
+.option.--is-active {
+    border-right: 3px solid red;
+    width: 58px;
+    cursor: default;
+}
+
+.option.--is-active:hover {
+    border-left: none;
+}
+
+.option img {
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+}
+
+.info {
+    padding: 0 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.info p {
+    margin-top: 0;
+}
+
+.tray {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.tray__slide {
+    position: absolute;
+    display: flex;
+    left: 0;
+    /*   transform: translateX(-50%);
+  animation: wheelin 1s 2s ease-in-out forwards; */
+}
+
+.tray__swatch {
+    transition: 0.1s ease-in;
+    height: 50px;
+    min-width: 50px;
+    flex: 1;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    background-position: center;
+}
+
+.tray__swatch:nth-child(5n + 5) {
+    margin-right: 20px;
+}
+
+.drag-notice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    width: 10em;
+    height: 10em;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5em;
+    background: white;
+    position: absolute;
+}
+
+.drag-notice.start {
+    -webkit-animation: popout 0.25s 3s forwards;
+    animation: popout 0.25s 3s forwards;
+}
+
+@-webkit-keyframes popout {
+    to {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+}
+
+@keyframes popout {
+    to {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+}
+
+@-webkit-keyframes wheelin {
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes wheelin {
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 960px) {
+    .options {
+        top: 0;
+    }
+
+    .info {
+        padding: 0 1em 1em 0;
+    }
+
+    .info__message {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .info__message p {
+        margin: 0;
+        font-size: 0.7em;
+    }
+
+    .frame {
+        left: auto;
+        right: 0;
+        padding-left: 6rem;
+    }
+
+    .frame__links {
+        display: block;
+        margin: 0;
+        text-align: right;
+    }
+}
+
+@media (max-width: 720px) {
+    .info {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1em 1em;
+    }
+
+    .info__message {
+        margin-bottom: 1em;
+    }
+}
+
+@media (max-width: 680px) {
+    .info {
+        padding: 1em 2em;
+    }
+
+    .info__message {
+        display: none;
+    }
+
+    .options {
+        bottom: 50px;
+    }
+
+    .option {
+        margin-bottom: 1px;
+        padding: 5px;
+        height: 45px;
+        width: 45px;
+        display: flex;
+    }
+
+    .option.--is-active {
+        border-right: 2px solid red;
+        width: 47px;
+    }
+
+    .option img {
+        height: 100%;
+        width: auto;
+        pointer-events: none;
+    }
+}

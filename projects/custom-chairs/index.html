@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>3D Model Color Customizer App | Codrops</title>
+        <meta
+            name="description"
+            content="3D model color customizer app with Three.js."
+        />
+        <meta
+            name="keywords"
+            content="three.js, color customizer, app, 3d model, javascript"
+        />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Raleway:500,700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- We add the loader CSS here so that assets don't pop in before the bundled CSS is loaded -->
+        <style>
+            .loading {
+                position: fixed;
+                z-index: 50;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: #f1f1f1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .loader {
+                -webkit-perspective: 120px;
+                -moz-perspective: 120px;
+                -ms-perspective: 120px;
+                perspective: 120px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .loader::before {
+                content: '';
+                position: absolute;
+                left: 25px;
+                top: 25px;
+                width: 50px;
+                height: 50px;
+                background-color: #ff0000;
+                animation: flip 1s infinite;
+            }
+
+            @keyframes flip {
+                0% {
+                    transform: rotate(0);
+                }
+
+                50% {
+                    transform: rotateY(180deg);
+                }
+
+                100% {
+                    transform: rotateY(180deg) rotateX(180deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- The loading element overlays all else until the model is loaded, at which point we remove this element from the DOM -->
+        <div class="loading" id="js-loader">
+            <div class="loader"></div>
+        </div>
+        <!-- Just a quick notice to the user that it can be interacted with -->
+        <span class="drag-notice" id="js-drag-notice"
+            >Drag to rotate 360&#176;</span
+        >
+        <!-- These toggle the the different parts of the chair that can be edited, note data-option is the key that links to the name of the part in the 3D file -->
+        <div class="options">
+            <div class="option --is-active" data-option="legs">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/legs.svg"
+                    alt=""
+                />
+            </div>
+            <div class="option" data-option="cushions">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/cushions.svg"
+                    alt=""
+                />
+            </div>
+            <div class="option" data-option="base">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/base.svg"
+                    alt=""
+                />
+            </div>
+            <div class="option" data-option="supports">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/supports.svg"
+                    alt=""
+                />
+            </div>
+            <div class="option" data-option="back">
+                <img
+                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/back.svg"
+                    alt=""
+                />
+            </div>
+        </div>
+        <!-- The canvas element is used to draw the 3D scene -->
+        <canvas id="webgl-canvas"></canvas>
+        <div class="controls">
+            <div class="info">
+                <div class="info__message">
+                    <p>
+                        <strong>&nbsp;Grab&nbsp;</strong> to rotate chair.
+                        <strong>&nbsp;Scroll&nbsp;</strong> to zoom.
+                        <strong>&nbsp;Drag&nbsp;</strong> swatches to view more.
+                    </p>
+                </div>
+            </div>
+            <!-- This tray will be filled with colors via JS, and the ability to slide this panel will be added in with a lightweight slider script (no dependency used for this) -->
+            <div id="js-tray" class="tray">
+                <div id="js-tray-slide" class="tray__slide"></div>
+            </div>
+        </div>
+        <div class="frame">
+            <h1 class="frame__title">
+                3D Model Color Customizer App
+            </h1>
+        </div>
+        <script src="./script.js" type="module"></script>
+    </body>
+</html>
