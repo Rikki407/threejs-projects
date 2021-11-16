@@ -9,7 +9,10 @@ module.exports = {
     build: {
         rollupOptions: {
             input: {
-                main: path.resolve(__dirname, 'projects/index.html'),
+                main: path.resolve(__dirname, '/index.html'),
+                customchair: path.resolve(__dirname, 'projects/custom-chairs/index.html'),
+                plane: path.resolve(__dirname, 'projects/plane/index.html'),
+                sphere: path.resolve(__dirname, 'projects/sphere/index.html'),
             },
         },
     },
