@@ -1,9 +1,9 @@
 import './style.css';
-import wood from '/img/wood_.jpg'
-import fabric from '/img/fabric_.jpg'
-import pattern from '/img/pattern_.jpg'
-import denim from '/img/denim_.jpg'
-import quilt from '/img/quilt_.jpg'
+import wood from '/img/wood_.jpg';
+import fabric from '/img/fabric_.jpg';
+import pattern from '/img/pattern_.jpg';
+import denim from '/img/denim_.jpg';
+import quilt from '/img/quilt_.jpg';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';

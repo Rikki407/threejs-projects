@@ -1,0 +1,78 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.content-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff;
+}
+h1 {
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+p {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+}
+
+a {
+    display: inline-block;
+    text-decoration: inherit;
+    border: 1px solid white;
+    color: white;
+    border-radius: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.content-wrapper a:hover {
+    --tw-text-opacity: 1;
+    color: rgba(31, 41, 55, var(--tw-text-opacity));
+    background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 0.8rem;
+        line-height: 0.95rem;
+    }
+    p {
+        width: 100%;
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+    }
+}
+
+#github {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#github a {
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+#github svg {
+    margin-right: 0.5rem;
+}
+#github a:hover svg path {
+    fill: #161b22;
+}

@@ -1,11 +1,15 @@
-const { resolve } = require('path');
+import path from 'path';
 
 module.exports = {
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, '.'),
+        },
+    },
     build: {
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'index.html'),
-                projects: resolve(__dirname, 'projects/custom-chairs/index.html'),
+                main: path.resolve(__dirname, 'projects/index.html'),
             },
         },
     },
