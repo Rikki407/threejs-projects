@@ -3,21 +3,28 @@
 <a href="https://www.rishablamba.com/projects/custom-chairs/"><h2>3D Model Color Customizer App</h1>Click here </a>to design your own chair
 
 <p>Fully customizable with complex textures like wood, metal, silk etc</p>
-<img alt="GIF" src="./chair.gif"/>
+<img alt="GIF" src="./chair.gif" width="100%"/>
 <br/>
 <br/>
 
 #
 
 <p><a href="https://www.rishablamba.com/projects/plane/"><h2>Flappy Plane</h1>Click here </a>to play an in-browser game inspired by flappy birds</p>
-<img alt="GIF" src="https://media1.giphy.com/media/pKHV430CAJCLfxWaDR/giphy.gif?cid=790b7611bd6ba141faa3fb49f849ee1f8b7f6edbbfd6f869&rid=giphy.gif&ct=g" width="640px"/>
+<img alt="GIF" src="./PlaneGameRecording.gif" width="100%"/>
 
 <br/>
 
 #
 
+<p><a href="https://www.rishablamba.com"><h2>Sparkling Waves</h1>Click here </a>to check out basically the landing page of my website</p>
+<img alt="GIF" src="./landingpage.gif" width="100%"/>
+<br/>
+<br/>
+
+#
+
 <p><a href="https://www.rishablamba.com/projects/sphere/"><h2>Feel The Sphere</h1>Click here </a>to play with an awesome looking metalic ball :P</p>
-<img alt="GIF" src="./sphere.gif"/>
+<img alt="GIF" src="./sphere.gif" width="100%"/>
 <br/>
 <br/>
 
@@ -36,7 +43,7 @@
 
 <h2> 👨🏻‍💻 About Me </h2>
 
--   🔭 &nbsp; I’m a FullStack Developer with proficiency in the MERN(Mongo DB|Express|React|Node) stack and <strong>3D UI development</strong> 
+-   🔭 &nbsp; I’m a FullStack Developer with proficiency in the MERN(Mongo DB|Express|React|Node) stack and <strong>3D UI development</strong>
 -   🌱 &nbsp; Enthusiast in Data Science and Artificial Intelligence .
 -   🎓 &nbsp; Pursuing my Masters in Computer Science from University of Illinois at Chicago.
 -   🤔 &nbsp; Exploring new technologies and developing software solutions and quick hacks.
