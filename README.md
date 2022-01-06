@@ -1,6 +1,6 @@
 # Three JS Projects
 
-<a href="https://www.rishablamba.com/projects/custom-chairs/"><h2>3D Model Color Customizer App</h1>Click here </a>to design your own chair
+<a href="https://3dprojects.netlify.app/projects/custom-chairs/"><h2>3D Model Color Customizer App</h1>Click here </a>to design your own chair
 
 <p>Fully customizable with complex textures like wood, metal, silk etc</p>
 <img alt="GIF" src="./chair.gif" width="100%"/>
@@ -9,7 +9,7 @@
 
 #
 
-<p><a href="https://www.rishablamba.com/projects/plane/"><h2>Flappy Plane</h1>Click here </a>to play an in-browser game inspired by flappy birds</p>
+<p><a href="https://3dprojects.netlify.app/projects/plane/"><h2>Flappy Plane</h1>Click here </a>to play an in-browser game inspired by flappy birds</p>
 <img alt="GIF" src="./PlaneGameRecording.gif" width="100%"/>
 
 <br/>
@@ -23,7 +23,7 @@
 
 #
 
-<p><a href="https://www.rishablamba.com/projects/sphere/"><h2>Feel The Sphere</h1>Click here </a>to play with an awesome looking metalic ball :P</p>
+<p><a href="https://3dprojects.netlify.app/projects/sphere/"><h2>Feel The Sphere</h1>Click here </a>to play with an awesome looking metalic ball :P</p>
 <img alt="GIF" src="./sphere.gif" width="100%"/>
 <br/>
 <br/>
