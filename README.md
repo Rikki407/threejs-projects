@@ -1,5 +1,4 @@
 # Three JS Projects
-
 <a href="https://3dprojects.netlify.app/projects/custom-chairs/"><h2>3D Model Color Customizer App</h1>Click here </a>to design your own chair
 
 <p>Fully customizable with complex textures like wood, metal, silk etc</p>
@@ -72,3 +71,4 @@
 &nbsp; <a href="https://www.linkedin.com/in/rishab-lamba/" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/plasticine/100/000000/linkedin.png" width="50" /></a>
 &nbsp; <a href="mailto:rlamba3@uic.edu" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/plasticine/100/000000/gmail.png"  width="50" /></a>
 </p>
+<img alt="GIF" src="https://user-images.githubusercontent.com/26832011/148512507-734de465-03f6-4201-98a9-f30b53649761.png" width="0"/>
