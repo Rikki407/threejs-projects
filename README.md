@@ -6,6 +6,13 @@
 <br/>
 <br/>
 
+
+#
+<p><h2>Shootout (Not ready for production)</h2>to play an in-browser shooting game</p>
+<img alt="GIF" src="https://user-images.githubusercontent.com/26832011/148662041-be59ec50-6ff2-4f55-a232-020960b46e0d.gif" width="100%"/>
+
+<br/>
+
 #
 
 <p><a href="https://3dprojects.netlify.app/projects/plane/"><h2>Flappy Plane</h1>Click here </a>to play an in-browser game inspired by flappy birds</p>
