@@ -1,5 +1,5 @@
-import * as THREE from '../../libs/three128/three.module.js';
-import { SFX } from '../../libs/SFX.js';
+import * as THREE from './three128/three.module.js';
+import { SFX } from '@/libs/SFX.js';
 
 class NPC{
 	constructor(options){

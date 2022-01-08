@@ -1,196 +1,200 @@
-import {NPC} from './NPC.js';
-import {GLTFLoader} from '../../libs/three128/GLTFLoader.js';
-import {DRACOLoader} from '../../libs/three128/DRACOLoader.js';
-import {Skeleton, Raycaster, BufferGeometry, Line, Vector3} from '../../libs/three128/three.module.js';
+import { NPC } from './NPC.js';
+import { GLTFLoader } from './three128/GLTFLoader.js';
+import { DRACOLoader } from './three128/DRACOLoader.js';
+import {
+    Skeleton,
+    Raycaster,
+    BufferGeometry,
+    Line,
+    Vector3,
+} from './three128/three.module.js';
 
-class NPCHandler{
-    constructor( game ){
+class NPCHandler {
+    constructor(game) {
         this.game = game;
-		this.loadingBar = this.game.loadingBar;
-		this.ready = false;
-		this.load();
-	}
-
-	initMouseHandler(){
-		const raycaster = new Raycaster();
-    	this.game.renderer.domElement.addEventListener( 'click', raycast, false );
-			
-    	const self = this;
-    	const mouse = { x:0, y:0 };
-    	
-    	function raycast(e){
-    		
-			mouse.x = ( e.clientX / window.innerWidth ) * 2 - 1;
-			mouse.y = - ( e.clientY / window.innerHeight ) * 2 + 1;
-
-			//2. set the picking ray from the camera position and mouse coordinates
-			raycaster.setFromCamera( mouse, self.game.camera );    
-
-			//3. compute intersections
-			const intersects = raycaster.intersectObject( self.game.navmesh );
-			
-			if (intersects.length>0){
-				const pt = intersects[0].point;
-				console.log(pt);
-				self.npcs[0].newPath(pt, true);
-			}	
-		}
+        this.loadingBar = this.game.loadingBar;
+        this.ready = false;
+        this.load();
     }
 
-	reset(){
-		this.npcs.forEach( npc => {
-			npc.reset();
-		})
-	}
+    initMouseHandler() {
+        const raycaster = new Raycaster();
+        this.game.renderer.domElement.addEventListener('click', raycast, false);
 
-    load(){
-        const loader = new GLTFLoader( ).setPath(`${this.game.assetsPath}factory/`);
-		const dracoLoader = new DRACOLoader();
-        dracoLoader.setDecoderPath( '../../libs/three128/draco/' );
-        loader.setDRACOLoader( dracoLoader );
+        const self = this;
+        const mouse = { x: 0, y: 0 };
+
+        function raycast(e) {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+            //2. set the picking ray from the camera position and mouse coordinates
+            raycaster.setFromCamera(mouse, self.game.camera);
+
+            //3. compute intersections
+            const intersects = raycaster.intersectObject(self.game.navmesh);
+
+            if (intersects.length > 0) {
+                const pt = intersects[0].point;
+                console.log(pt);
+                self.npcs[0].newPath(pt, true);
+            }
+        }
+    }
+
+    reset() {
+        this.npcs.forEach((npc) => {
+            npc.reset();
+        });
+    }
+
+    load() {
+        const loader = new GLTFLoader().setPath(
+            `${this.game.assetsPath}factory/`
+        );
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath('../../assets/draco/');
+        loader.setDRACOLoader(dracoLoader);
         this.loadingBar.visible = true;
-		
-		// Load a GLTF resource
-		loader.load(
-			// resource URL
-			`swat-guy2.glb`,
-			// called when the resource is loaded
-			gltf => {
-				if (this.game.pathfinder){
-					this.initNPCs(gltf);
-				}else{
-					this.gltf = gltf;
-				}
-			},
-			// called while loading is progressing
-			xhr => {
 
-				this.loadingBar.update( 'swat-guy', xhr.loaded, xhr.total );
+        // Load a GLTF resource
+        loader.load(
+            // resource URL
+            `swat-guy2.glb`,
+            // called when the resource is loaded
+            (gltf) => {
+                if (this.game.pathfinder) {
+                    this.initNPCs(gltf);
+                } else {
+                    this.gltf = gltf;
+                }
+            },
+            // called while loading is progressing
+            (xhr) => {
+                this.loadingBar.update('swat-guy', xhr.loaded, xhr.total);
+            },
+            // called when loading has errors
+            (err) => {
+                console.error(err);
+            }
+        );
+    }
 
-			},
-			// called when loading has errors
-			err => {
+    initNPCs(gltf = this.gltf) {
+        this.waypoints = this.game.waypoints;
 
-				console.error( err );
+        const gltfs = [gltf];
 
-			}
-		);
-	}
-    
-	initNPCs(gltf = this.gltf){
-		this.waypoints = this.game.waypoints;
-        
-		const gltfs = [gltf];
-			
-		for(let i=0; i<3; i++) gltfs.push(this.cloneGLTF(gltf));
+        for (let i = 0; i < 3; i++) gltfs.push(this.cloneGLTF(gltf));
 
-		this.npcs = [];
-		
-		gltfs.forEach(gltf => {
-			const object = gltf.scene;
-			let rifle, aim;
+        this.npcs = [];
 
-			object.traverse(function(child){
-				if (child.isMesh){
-					child.castShadow = true;
-					child.frustumCulled = false;
-					if (child.name.includes('Rifle')) rifle = child;
-				}
-			});
+        gltfs.forEach((gltf) => {
+            const object = gltf.scene;
+            let rifle, aim;
 
-			if (rifle){
-				const geometry = new BufferGeometry().setFromPoints( [ new Vector3( 0, 0, 0 ), new Vector3( 1, 0, 0 ) ] );
+            object.traverse(function (child) {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.frustumCulled = false;
+                    if (child.name.includes('Rifle')) rifle = child;
+                }
+            });
 
-				const line = new Line( geometry );
-				line.name = 'aim';
-				line.scale.x = 50;
+            if (rifle) {
+                const geometry = new BufferGeometry().setFromPoints([
+                    new Vector3(0, 0, 0),
+                    new Vector3(1, 0, 0),
+                ]);
 
-				rifle.add(line);
-				line.position.set(0, 0, 0.5);
-				aim = line;
-				line.visible = false;
-			}
+                const line = new Line(geometry);
+                line.name = 'aim';
+                line.scale.x = 50;
 
-			const options = {
-				object,
-				speed: 0.8,
-				animations: gltf.animations,
-				waypoints: this.waypoints,
-				app: this.game,
-				showPath: false,
-				zone: 'factory',
-				name: 'swat-guy',
-				rifle,
-				aim
-			};
+                rifle.add(line);
+                line.position.set(0, 0, 0.5);
+                aim = line;
+                line.visible = false;
+            }
 
-			const npc = new NPC(options);
+            const options = {
+                object,
+                speed: 0.8,
+                animations: gltf.animations,
+                waypoints: this.waypoints,
+                app: this.game,
+                showPath: false,
+                zone: 'factory',
+                name: 'swat-guy',
+                rifle,
+                aim,
+            };
 
-			npc.object.position.copy(this.randomWaypoint);
-			npc.newPath(this.randomWaypoint);
-			
-			this.npcs.push(npc);
-			
-		});
+            const npc = new NPC(options);
 
-		this.loadingBar.visible = !this.loadingBar.loaded;
-		this.ready = true;
+            npc.object.position.copy(this.randomWaypoint);
+            npc.newPath(this.randomWaypoint);
 
-		this.game.startRendering();
-	}
+            this.npcs.push(npc);
+        });
 
-	cloneGLTF(gltf){
-	
-		const clone = {
-			animations: gltf.animations,
-			scene: gltf.scene.clone(true)
-		  };
-		
-		const skinnedMeshes = {};
-		
-		gltf.scene.traverse(node => {
-			if (node.isSkinnedMesh) {
-			  skinnedMeshes[node.name] = node;
-			}
-		});
-		
-		const cloneBones = {};
-		const cloneSkinnedMeshes = {};
-		
-		clone.scene.traverse(node => {
-			if (node.isBone) {
-			  cloneBones[node.name] = node;
-			}
-			if (node.isSkinnedMesh) {
-			  cloneSkinnedMeshes[node.name] = node;
-			}
-		});
-		
-		for (let name in skinnedMeshes) {
-			const skinnedMesh = skinnedMeshes[name];
-			const skeleton = skinnedMesh.skeleton;
-			const cloneSkinnedMesh = cloneSkinnedMeshes[name];
-			const orderedCloneBones = [];
-			for (let i = 0; i < skeleton.bones.length; ++i) {
-				const cloneBone = cloneBones[skeleton.bones[i].name];
-				orderedCloneBones.push(cloneBone);
-			}
-			cloneSkinnedMesh.bind(
-				new Skeleton(orderedCloneBones, skeleton.boneInverses),
-				cloneSkinnedMesh.matrixWorld);
-		}
-		
-		return clone;
+        this.loadingBar.visible = !this.loadingBar.loaded;
+        this.ready = true;
 
-	}
-    
-    get randomWaypoint(){
-		const index = Math.floor(Math.random()*this.waypoints.length);
-		return this.waypoints[index];
-	}
+        this.game.startRendering();
+    }
 
-    update(dt){
-        if (this.npcs) this.npcs.forEach( npc => npc.update(dt) );
+    cloneGLTF(gltf) {
+        const clone = {
+            animations: gltf.animations,
+            scene: gltf.scene.clone(true),
+        };
+
+        const skinnedMeshes = {};
+
+        gltf.scene.traverse((node) => {
+            if (node.isSkinnedMesh) {
+                skinnedMeshes[node.name] = node;
+            }
+        });
+
+        const cloneBones = {};
+        const cloneSkinnedMeshes = {};
+
+        clone.scene.traverse((node) => {
+            if (node.isBone) {
+                cloneBones[node.name] = node;
+            }
+            if (node.isSkinnedMesh) {
+                cloneSkinnedMeshes[node.name] = node;
+            }
+        });
+
+        for (let name in skinnedMeshes) {
+            const skinnedMesh = skinnedMeshes[name];
+            const skeleton = skinnedMesh.skeleton;
+            const cloneSkinnedMesh = cloneSkinnedMeshes[name];
+            const orderedCloneBones = [];
+            for (let i = 0; i < skeleton.bones.length; ++i) {
+                const cloneBone = cloneBones[skeleton.bones[i].name];
+                orderedCloneBones.push(cloneBone);
+            }
+            cloneSkinnedMesh.bind(
+                new Skeleton(orderedCloneBones, skeleton.boneInverses),
+                cloneSkinnedMesh.matrixWorld
+            );
+        }
+
+        return clone;
+    }
+
+    get randomWaypoint() {
+        const index = Math.floor(Math.random() * this.waypoints.length);
+        return this.waypoints[index];
+    }
+
+    update(dt) {
+        if (this.npcs) this.npcs.forEach((npc) => npc.update(dt));
     }
 }
 

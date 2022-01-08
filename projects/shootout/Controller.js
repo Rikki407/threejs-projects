@@ -1,5 +1,5 @@
-import { Object3D, Camera, Vector3, Quaternion, Raycaster } from '../../libs/three128/three.module.js';
-import { JoyStick } from '../../libs/JoyStick.js';
+import { Object3D, Camera, Vector3, Quaternion, Raycaster } from './three128/three.module.js';
+import { JoyStick } from '@/libs/JoyStick.js';
 //import { Game } from './Game.js';
 
 class Controller{

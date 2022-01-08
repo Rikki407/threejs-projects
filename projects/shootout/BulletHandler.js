@@ -5,7 +5,7 @@ import {
         Vector3, 
         Quaternion
     } from 'three';
-import { sphereIntersectsCylinder } from '@/libs/Collisions.js';
+import { sphereIntersectsCylinder } from './Collisions.js';
 
 class BulletHandler{
     constructor(game){

@@ -1,19 +1,19 @@
-import * as THREE from '../../libs/three128/three.module.js';
-import { GLTFLoader } from '../../libs/three128/GLTFLoader.js';
-import { RGBELoader } from '../../libs/three128/RGBELoader.js';
+import * as THREE from './three128/three.module.js';
+import { GLTFLoader } from './three128/GLTFLoader.js';
+import { RGBELoader } from './three128/RGBELoader.js';
 import { NPCHandler } from './NPCHandler.js';
-import { LoadingBar } from '../../libs/LoadingBar.js';
-import { Pathfinding } from '../../libs/pathfinding/Pathfinding.js';
+import { LoadingBar } from '@/libs/LoadingBar.js';
+import { Pathfinding } from './pathfinding/Pathfinding.js';
 import { User } from './User.js';
 import { Controller } from './Controller.js';
 import { BulletHandler } from './BulletHandler.js';
 import { UI } from './UI.js';
-import { EffectComposer } from '../../libs/three128/pp/EffectComposer.js';
-import { RenderPass } from '../../libs/three128/pp/RenderPass.js';
-import { ShaderPass } from '../../libs/three128/pp/ShaderPass.js';
-import { GammaCorrectionShader } from '../../libs/three128/pp/GammaCorrectionShader.js';
-import { Tween } from '../../libs/Toon3D.js';
-import { SFX } from '../../libs/SFX.js';
+import { EffectComposer } from './three128/pp/EffectComposer.js';
+import { RenderPass } from './three128/pp/RenderPass.js';
+import { ShaderPass } from './three128/pp/ShaderPass.js';
+import { GammaCorrectionShader } from './three128/pp/GammaCorrectionShader.js';
+import { Tween } from '@/libs/Toon3D.js';
+import { SFX } from '@/libs/SFX.js';
 
 class Game {
     constructor() {

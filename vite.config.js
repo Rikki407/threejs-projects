@@ -7,6 +7,8 @@ module.exports = {
         },
     },
     build: {
+        assetsInlineLimit: '102400', // 2kb
+        chunkSizeWarningLimit: '102400', // 2kb
         rollupOptions: {
             input: {
                 main: path.resolve(__dirname, '/index.html'),

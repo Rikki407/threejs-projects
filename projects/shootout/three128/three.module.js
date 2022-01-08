@@ -193,8 +193,8 @@ const AlwaysStencilFunc = 519;
 
 const StaticDrawUsage = 35044;
 const DynamicDrawUsage = 35048;
-const StreamDrawUsage = 35040;
-const StaticReadUsage = 35045;
+const StreamDrawUsage = 35040;  
+const StaticReadUsage = 35045; 
 const DynamicReadUsage = 35049;
 const StreamReadUsage = 35041;
 const StaticCopyUsage = 35046;
