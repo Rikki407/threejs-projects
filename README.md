@@ -8,7 +8,7 @@
 
 
 #
-<p><h2>Shootout (Not ready for production)</h2>to play an in-browser shooting game</p>
+<p><h2>Shootout (Not ready for production)</h2>Play an in-browser shooting game</p>
 <img alt="GIF" src="https://user-images.githubusercontent.com/26832011/148662041-be59ec50-6ff2-4f55-a232-020960b46e0d.gif" width="100%"/>
 
 <br/>
